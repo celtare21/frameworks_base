@@ -5193,6 +5193,12 @@ public final class Settings {
         private static final Validator RECENT_APP_SIDEBAR_OPEN_SIMULTANEOUSLY_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to use icon pack for Recents
+         * @hide
+         */
+        public static final String RECENTS_ICON_PACK = "recents_icon_pack";
+
+        /**
          * show the membar in slim recents
          *  @hide
          */
