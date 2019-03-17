@@ -91,28 +91,7 @@ public class KernelUidCpuTimeReader extends
                         userTimeDeltaUs -= mLastUserTimeUs.valueAt(index);
                         systemTimeDeltaUs -= mLastSystemTimeUs.valueAt(index);
 
-                        final long timeDiffUs = nowUs - mLastTimeReadUs;
                         if (userTimeDeltaUs < 0 || systemTimeDeltaUs < 0) {
-                            StringBuilder sb = new StringBuilder("Malformed cpu data for UID=");
-                            sb.append(uid).append("!\n");
-                            sb.append("Time between reads: ");
-                            TimeUtils.formatDuration(timeDiffUs / 1000, sb);
-                            sb.append("\n");
-                            sb.append("Previous times: u=");
-                            TimeUtils.formatDuration(mLastUserTimeUs.valueAt(index) / 1000, sb);
-                            sb.append(" s=");
-                            TimeUtils.formatDuration(mLastSystemTimeUs.valueAt(index) / 1000, sb);
-
-                            sb.append("\nCurrent times: u=");
-                            TimeUtils.formatDuration(userTimeUs / 1000, sb);
-                            sb.append(" s=");
-                            TimeUtils.formatDuration(systemTimeUs / 1000, sb);
-                            sb.append("\nDelta: u=");
-                            TimeUtils.formatDuration(userTimeDeltaUs / 1000, sb);
-                            sb.append(" s=");
-                            TimeUtils.formatDuration(systemTimeDeltaUs / 1000, sb);
-                            Slog.e(TAG, sb.toString());
-
                             userTimeDeltaUs = 0;
                             systemTimeDeltaUs = 0;
                         }
